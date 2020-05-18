@@ -6,10 +6,10 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "export NODE_ENV=test && mocha 'src/test/**/*.js'"
   },
   "keywords": [],
-  "author": "",
+  "author": "Luke Mwila",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -19,6 +19,9 @@
     "mongoose": "^5.9.14"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "chai": "^4.2.0",
+    "mocha": "^7.1.2",
+    "nodemon": "^2.0.4",
+    "supertest": "^4.0.2"
   }
 }
