@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_event_rule" "main" {
-  name = var.name
+  name = "${var.name}-${var.environment}"
   description = var.description
 
   event_pattern = <<PATTERN

@@ -37,7 +37,7 @@ resource "aws_iam_role_policy" "main" {
       "Action": [
         "codepipeline:*"
       ],
-      "Resource": "${var.codecommit_arn}"
+      "Resource": "${var.codepipeline_arn}"
     }
   ]
 }

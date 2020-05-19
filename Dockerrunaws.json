@@ -1,0 +1,33 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+      {
+        "name": "nginx",
+        "image": "lukondefmwila/dkr-multicontainer-app-nginx",
+        "hostname": "nginx",
+        "essential": true,
+        "portMappings": [
+          {
+            "hostPort": 80,
+            "containerPort": 80
+          }
+        ],
+        "links": ["client", "backend"],
+        "memory": 100
+      },
+      {
+        "name": "client",
+        "image": "lukondefmwila/dkr-multicontainer-app-client",
+        "hostname": "client",
+        "essential": false,
+        "memory": 300
+      },
+      {
+        "name": "backend",
+        "image": "lukondefmwila/dkr-multicontainer-app-backend",
+        "hostname": "backend",
+        "essential": false,
+        "memory": 300
+      }
+    ]
+}

@@ -29,3 +29,7 @@ variable lambda_policy {
   description = "The name of the policy"
   type = string
 }
+
+variable "environment" {
+  type = string
+}

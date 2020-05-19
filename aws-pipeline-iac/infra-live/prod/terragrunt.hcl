@@ -1,6 +1,6 @@
 inputs = {
-  environment    = "dev"
-  branch_name    = "develop"
+  environment    = "prod"
+  branch_name    = "master"
 }
 
 include {
@@ -11,7 +11,7 @@ include {
 }
 
 terraform {
-  source = "../../infrastructure-modules/cicd"
+  source = "../../infra-modules/cicd"
 
   extra_arguments "conditional_vars" {
     # built-in function to automatically get the list of 

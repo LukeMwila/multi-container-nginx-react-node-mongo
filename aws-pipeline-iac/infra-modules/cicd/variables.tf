@@ -17,6 +17,10 @@ variable "github_secret_name" {
   type        = string
 }
 
+variable "docker_secret_name" {
+  type = string
+}
+
 variable "environment" {
   type = string
 }
