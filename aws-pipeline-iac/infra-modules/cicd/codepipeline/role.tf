@@ -65,9 +65,7 @@ data "aws_iam_policy_document" "codepipeline_mutlicontainer_app" {
           "codebuild:BatchPutTestCases"
         ]
 
-        resources = [
-          "arn:aws:codebuild:eu-west-1:*"
-        ]
+        resources = ["*"]
     }
 
     statement {
@@ -82,7 +80,9 @@ data "aws_iam_policy_document" "codepipeline_mutlicontainer_app" {
           "cloudformation:DescribeStackResource",
           "cloudformation:DescribeStackResources",
           "cloudformation:GetTemplate",
-          "cloudformation:ValidateTemplate" 
+          "cloudformation:ValidateTemplate",
+          "cloudformation:UpdateStack",
+          "cloudformation:CancelUpdateStack" 
         ]
 
         resources = ["*"]
