@@ -51,6 +51,9 @@ data "aws_iam_policy_document" "codepipeline_mutlicontainer_app" {
         effect = "Allow"
 
         actions = [
+          "codebuild:StartBuild",
+          "codebuild:StopBuild",
+          "codebuild:BatchGetBuilds",
           "codebuild:UpdateReportGroup",
           "codebuild:ListReportsForReportGroup",
           "codebuild:CreateReportGroup",
