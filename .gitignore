@@ -1,1 +1,5 @@
+# Environment variables
 /env
+
+# Mongo db volume data for persistence storage
+/db/mongo-volume/*
