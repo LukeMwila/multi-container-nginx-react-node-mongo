@@ -5,6 +5,13 @@ phases:
       docker: 18
   pre_build:
     commands:
+      # Install Snyk
+      - echo Install Snyk
+      - curl -Lo ./snyk "https://github.com/snyk/snyk/releases/download/v1.210.0/snyk-linux"
+      - chmod -R +x ./snyk
+      # Snyk auth
+      - ./snyk config set api="$SNYK_AUTH_TOKEN"
+      # Build Docker image for testing
       - echo Build client and backend docker images for testing...
       - docker build -t lukondefmwila/react-test -f ./client/Dockerfile.dev ./client
       - docker build -t lukondefmwila/nodejs-test -f ./backend/Dockerfile.dev ./backend
@@ -16,6 +23,13 @@ phases:
       - docker run -e CI=true lukondefmwila/react-test
       - echo Run nodejs tests...
       - docker run -e CI=true lukondefmwila/nodejs-test
+      # Scan Docker image with Snyk
+      ## Client
+      - ./snyk test --severity-threshold=medium --docker lukondefmwila/react-test:latest --file=./client/Dockerfile.dev ./client
+      - ./snyk monitor --docker lukondefmwila/react-test:latest --file=./client/Dockerfile.dev ./client
+      ## Backend
+      - ./snyk test --severity-threshold=medium --docker lukondefmwila/nodejs-test:latest --file=./backend/Dockerfile.dev ./backend
+      - ./snyk monitor --docker lukondefmwila/nodejs-test:latest --file=./backend/Dockerfile.dev ./backend
       # Build the Docker images
       - echo Building the production Docker image...
       - docker build -t lukondefmwila/dkr-multicontainer-app-client ./client

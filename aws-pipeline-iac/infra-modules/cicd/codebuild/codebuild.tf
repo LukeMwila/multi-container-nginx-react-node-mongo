@@ -32,6 +32,11 @@ resource "aws_codebuild_project" "main" {
       name  = "DOCKER_PW"
       value = var.docker_pw
     }
+
+    environment_variable {
+      name  = "SNYK_AUTH_TOKEN"
+      value = var.snyk_auth_token
+    } 
   }
 
   source {

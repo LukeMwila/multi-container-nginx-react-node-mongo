@@ -19,3 +19,8 @@ variable "image" {
   description = "CodeBuild Container base image"
   type = string
 }
+
+variable "snyk_auth_token" {
+  description = "Snyk authentication token"
+  type = string
+}
