@@ -36,7 +36,7 @@ data "aws_elastic_beanstalk_solution_stack" "multi_docker" {
 module "codebuild_for_multicontainer_app" {
   source = "./codebuild"
   name = "codebuild-multicontainer-docker-app"
-  image       = "aws/codebuild/standard:2.0"
+  image       = "aws/codebuild/standard:4.0"
   docker_id = jsondecode(data.aws_secretsmanager_secret_version.docker_creds.secret_string)["DOCKER_ID"]
   docker_pw = jsondecode(data.aws_secretsmanager_secret_version.docker_creds.secret_string)["DOCKER_PW"]
   snyk_auth_token = jsondecode(data.aws_secretsmanager_secret_version.snyk_auth.secret_string)["SNYK_AUTH_TOKEN"]

@@ -25,11 +25,11 @@ phases:
       - docker run -e CI=true lukondefmwila/nodejs-test
       # Scan Docker image with Snyk
       ## Client
-      - ./snyk test --severity-threshold=medium --docker lukondefmwila/react-test:latest --file=./client/Dockerfile.dev ./client
-      - ./snyk monitor --docker lukondefmwila/react-test:latest --file=./client/Dockerfile.dev ./client
+      - ./snyk test --severity-threshold=medium --docker lukondefmwila/react-test:latest --file=./client/Dockerfile.dev
+      - ./snyk monitor --docker lukondefmwila/react-test:latest --file=./client/Dockerfile.dev
       ## Backend
-      - ./snyk test --severity-threshold=medium --docker lukondefmwila/nodejs-test:latest --file=./backend/Dockerfile.dev ./backend
-      - ./snyk monitor --docker lukondefmwila/nodejs-test:latest --file=./backend/Dockerfile.dev ./backend
+      - ./snyk test --severity-threshold=medium --docker lukondefmwila/nodejs-test:latest --file=./backend/Dockerfile.dev
+      - ./snyk monitor --docker lukondefmwila/nodejs-test:latest --file=./backend/Dockerfile.dev
       # Build the Docker images
       - echo Building the production Docker image...
       - docker build -t lukondefmwila/dkr-multicontainer-app-client ./client
