@@ -25,10 +25,14 @@ phases:
       - docker run -e CI=true lukondefmwila/nodejs-test
       # Scan Docker image with Snyk
       ## Client
+      ## Run test for security vulernabilities
       - ./snyk test --severity-threshold=medium --docker lukondefmwila/react-test:latest --file=./client/Dockerfile.dev
+      ## Setup continuous monitoring
       - ./snyk monitor --docker lukondefmwila/react-test:latest --file=./client/Dockerfile.dev
       ## Backend
+      ## Run test for security vulernabilities
       - ./snyk test --severity-threshold=medium --docker lukondefmwila/nodejs-test:latest --file=./backend/Dockerfile.dev
+      ## Setup continuous monitoring
       - ./snyk monitor --docker lukondefmwila/nodejs-test:latest --file=./backend/Dockerfile.dev
       # Build the Docker images
       - echo Building the production Docker image...
