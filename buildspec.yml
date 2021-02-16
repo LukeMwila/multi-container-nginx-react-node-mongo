@@ -10,7 +10,7 @@ phases:
       - curl -Lo ./snyk "https://github.com/snyk/snyk/releases/download/v1.210.0/snyk-linux"
       - chmod -R +x ./snyk
       # Snyk auth
-      - ./snyk config set api="$SNYK_AUTH_TOKEN"
+      # - ./snyk config set api="$SNYK_AUTH_TOKEN"
       # Build Docker image for testing
       - echo Build client and backend docker images for testing...
       - docker build -t lukondefmwila/react-test -f ./client/Dockerfile.dev ./client
@@ -26,14 +26,14 @@ phases:
       # Scan Docker image with Snyk
       ## Client
       ## Run test for security vulernabilities
-      - ./snyk test --severity-threshold=medium --docker lukondefmwila/react-test:latest --file=./client/Dockerfile.dev
+      # - ./snyk test --severity-threshold=medium --docker lukondefmwila/react-test:latest --file=./client/Dockerfile.dev
       ## Setup continuous monitoring
-      - ./snyk monitor --docker lukondefmwila/react-test:latest --file=./client/Dockerfile.dev
+      # - ./snyk monitor --docker lukondefmwila/react-test:latest --file=./client/Dockerfile.dev
       ## Backend
       ## Run test for security vulernabilities
-      - ./snyk test --severity-threshold=medium --docker lukondefmwila/nodejs-test:latest --file=./backend/Dockerfile.dev
+      # - ./snyk test --severity-threshold=medium --docker lukondefmwila/nodejs-test:latest --file=./backend/Dockerfile.dev
       ## Setup continuous monitoring
-      - ./snyk monitor --docker lukondefmwila/nodejs-test:latest --file=./backend/Dockerfile.dev
+      # - ./snyk monitor --docker lukondefmwila/nodejs-test:latest --file=./backend/Dockerfile.dev
       # Build the Docker images
       - echo Building the production Docker image...
       - docker build -t lukondefmwila/dkr-multicontainer-app-client ./client
